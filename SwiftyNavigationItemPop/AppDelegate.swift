@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "title"), forBarMetrics: UIBarMetrics.Default)
+        
+        
+        
+//        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+//        [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"title平铺X64.png"] forBarMetrics:UIBarMetricsDefault];
+//        [application setStatusBarStyle:UIStatusBarStyleDefault];
+        
+        
         return true
     }
 
