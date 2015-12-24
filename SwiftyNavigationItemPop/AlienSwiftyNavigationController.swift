@@ -64,6 +64,7 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
      
         UIView.animateWithDuration(0.4, animations: { () -> Void in
             self.moveViewOnHorizontal(ScreenWidth)
+            self.navigationBar.alpha = 0.0
             }) { (_) -> Void in
                 self.gestureAnimation(false)
                 var frame = self.view.frame
@@ -71,6 +72,8 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
                 self.view.frame = frame
                 self.isMoving = false
                 self.backgroundView.hidden = true
+                self.navigationBar.alpha = 1.0
+
         }
     }
     
@@ -81,6 +84,7 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
         frame.origin.x = x
         self.view.frame = frame
         screenShotImageView?.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight)
+        self.navigationBar.alpha = (ScreenWidth - x) / ScreenWidth
     }
     func gestureAnimation(animated : Bool){
         self.screenShotList.removeLast()
@@ -97,7 +101,7 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
         if recoginizer.state == UIGestureRecognizerState.Began {
             isMoving = true
             startPoint = touchPoint
-       
+            
             self.view.superview?.insertSubview(self.backgroundView, belowSubview: self.view)
             self.backgroundView.hidden = false
             if let lastScreenView = screenShotImageView {
@@ -119,6 +123,7 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
                         frame.origin.x = 0
                         self.view.frame = frame
                         self.isMoving = false
+                        self.navigationBar.alpha = 1.0
                 })
             } else {
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -126,6 +131,7 @@ class AlienSwiftyNavigationController: UINavigationController, UIGestureRecogniz
                     }, completion: { (_) -> Void in
                         self.isMoving = false
                         self.backgroundView.hidden = true
+                        self.navigationBar.alpha = 1.0
 
                 })
             }
